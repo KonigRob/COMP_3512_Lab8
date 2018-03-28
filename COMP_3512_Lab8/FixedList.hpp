@@ -1,5 +1,6 @@
 #pragma once
 #include <vector>
+#include <stdexcept>
 
 template<class T, size_t N>
 class FixedList
@@ -16,6 +17,8 @@ public:
 	T remove(const T&);
 	/*hi ya rob rob ^w^ */
 private:
+	const size_t capacity = N;
+	size_t size = 0;
 	T set[N];
 };
 
@@ -34,11 +37,11 @@ inline FixedList<T, N>::~FixedList()
 template<class T, size_t N>
 inline const T & FixedList<T, N>::get(unsigned int index) const
 {
-	try {
-		return T[index];
+	if (index > size) {
+		throw std::out_of_range;
 	}
-	catch (E e) {
-		return e;
+	else {
+		return set[index];
 	}
 }
 
@@ -51,7 +54,7 @@ inline T & FixedList<T, N>::operator[](unsigned int index)
 template<class T, size_t N>
 inline int FixedList<T, N>::getFirstIndex(const T & t) const
 {
-	for (int i = 0; i < N; ++i) {
+	for (int i = 0; i < size; ++i) {
 		if (t == T[i]) {
 			return i;
 		}
@@ -62,19 +65,27 @@ inline int FixedList<T, N>::getFirstIndex(const T & t) const
 template<class T, size_t N>
 inline size_t FixedList<T, N>::size() const
 {
-	return N;
+	return size;
 }
 
 template<class T, size_t N>
 inline size_t FixedList<T, N>::capacity() const
 {
-	return size_t();
+	return capacity;
 }
 
 template<class T, size_t N>
 inline bool FixedList<T, N>::add(const T & t)
 {
-	return T[].push(t);
+	if (size == capacity) {
+		return false;
+	}
+	else {
+		set[size] = t;
+		size++;
+		return true;
+	}
+	
 }
 
 template<class T, size_t N>
