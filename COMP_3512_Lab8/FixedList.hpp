@@ -1,4 +1,5 @@
 #pragma once
+#include <vector>
 
 template<class T, size_t N>
 class FixedList
@@ -13,14 +14,15 @@ public:
 	size_t capacity() const;
 	bool add(const T&);
 	T remove(const T&);
+	/*hi ya rob rob ^w^ */
 private:
-
+	
 };
 
 template<class T, size_t N>
 inline FixedList<T, N>::FixedList()
 {
-
+	
 }
 
 template<class T, size_t N>
@@ -30,21 +32,32 @@ inline FixedList<T, N>::~FixedList()
 }
 
 template<class T, size_t N>
-inline const T & FixedList<T, N>::get(unsigned int) const
+inline const T & FixedList<T, N>::get(unsigned int index) const
+{
+	try {
+		return T[index];
+	}
+	catch (E e) {
+		return e
+	}
+
+}
+
+template<class T, size_t N>
+inline T & FixedList<T, N>::operator[](unsigned int index)
 {
 	// TODO: insert return statement here
 }
 
 template<class T, size_t N>
-inline T & FixedList<T, N>::operator[](unsigned int)
+inline int FixedList<T, N>::getFirstIndex(const T & t) const
 {
-	// TODO: insert return statement here
-}
-
-template<class T, size_t N>
-inline int FixedList<T, N>::getFirstIndex(const T &) const
-{
-	return 0;
+	for (int i = 0; i < N; ++i) {
+		if (t == T[i]) {
+			return i;
+		}
+	}
+	return -1;
 }
 
 template<class T, size_t N>
@@ -60,13 +73,17 @@ inline size_t FixedList<T, N>::capacity() const
 }
 
 template<class T, size_t N>
-inline bool FixedList<T, N>::add(const T &)
+inline bool FixedList<T, N>::add(const T & t)
 {
 	return false;
 }
 
 template<class T, size_t N>
-inline T FixedList<T, N>::remove(const T &)
+inline T FixedList<T, N>::remove(const T & t)
 {
-	return T();
+	for (int i = 0; i < N; ++i) {
+		if (t == T[i]) {
+			
+		}
+	}
 }
