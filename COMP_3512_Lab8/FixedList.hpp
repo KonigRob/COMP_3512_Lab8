@@ -16,7 +16,7 @@ public:
 	T remove(const T&);
 	/*hi ya rob rob ^w^ */
 private:
-	
+	T set[N];
 };
 
 template<class T, size_t N>
@@ -38,15 +38,14 @@ inline const T & FixedList<T, N>::get(unsigned int index) const
 		return T[index];
 	}
 	catch (E e) {
-		return e
+		return e;
 	}
-
 }
 
 template<class T, size_t N>
 inline T & FixedList<T, N>::operator[](unsigned int index)
 {
-	// TODO: insert return statement here
+	return [index];
 }
 
 template<class T, size_t N>
@@ -63,7 +62,7 @@ inline int FixedList<T, N>::getFirstIndex(const T & t) const
 template<class T, size_t N>
 inline size_t FixedList<T, N>::size() const
 {
-	return size_t();
+	return N;
 }
 
 template<class T, size_t N>
@@ -75,7 +74,7 @@ inline size_t FixedList<T, N>::capacity() const
 template<class T, size_t N>
 inline bool FixedList<T, N>::add(const T & t)
 {
-	return false;
+	return T[].push(t);
 }
 
 template<class T, size_t N>
@@ -83,7 +82,7 @@ inline T FixedList<T, N>::remove(const T & t)
 {
 	for (int i = 0; i < N; ++i) {
 		if (t == T[i]) {
-			
+			return 
 		}
 	}
 }
