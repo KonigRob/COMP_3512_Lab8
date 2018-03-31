@@ -1,5 +1,4 @@
 #pragma once
-#include <vector>
 #include <stdexcept>
 
 template<class T, size_t N>
@@ -133,7 +132,7 @@ inline T FixedList<T, N>::remove(const T & t)
 {
 	for (int i = 0; i < count; ++i) {
 		if (t == set[i]) {
-			int found = set[i];
+			T found = set[i];
 			for (int j = i; j < count; ++j) {
 				set[j] = set[j + 1];
 			}

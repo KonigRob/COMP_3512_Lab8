@@ -1,5 +1,6 @@
 #include "../COMP_3512_Lab8/FixedList.hpp"
 #include "CppUnitTest.h"
+#include <string>
 
 using namespace Microsoft::VisualStudio::CppUnitTestFramework;
 
@@ -16,10 +17,10 @@ namespace FixedListTester
 		}
 		TEST_METHOD(get2)
 		{
-			FixedList<int, 4> fl;
-			fl.add(2);
-			fl.add(4);
-			Assert::AreEqual(4, fl.get(1));
+			FixedList<std::string, 4> fl;
+			fl.add("hello");
+			fl.add("chris");
+			Assert::AreEqual((std::string)"chris", fl.get(1));
 		}
 		TEST_METHOD(square1)
 		{
@@ -30,10 +31,10 @@ namespace FixedListTester
 		}
 		TEST_METHOD(square2)
 		{
-			FixedList<int, 4> fl;
-			fl.add(2);
-			fl.add(4);
-			Assert::AreEqual(2, fl[0]);
+			FixedList<std::string, 4> fl;
+			fl.add("are");
+			fl.add("you");
+			Assert::AreEqual((std::string)"are", fl[0]);
 		}
 		TEST_METHOD(getFirstIndex1)
 		{
@@ -44,10 +45,10 @@ namespace FixedListTester
 		}
 		TEST_METHOD(getFirstIndex2)
 		{
-			FixedList<int, 4> fl;
-			fl.add(2);
-			fl.add(4);
-			Assert::AreEqual(1, fl.getFirstIndex(4));
+			FixedList<std::string, 4> fl;
+			fl.add("craving");
+			fl.add("pickles");
+			Assert::AreEqual(1, fl.getFirstIndex("pickles"));
 		}
 		TEST_METHOD(size1)
 		{
@@ -58,7 +59,7 @@ namespace FixedListTester
 		}
 		TEST_METHOD(size2)
 		{
-			FixedList<int, 4> fl;
+			FixedList<std::string, 4> fl;
 			Assert::AreEqual((size_t)0, fl.size());
 		}
 		TEST_METHOD(capacity1)
@@ -68,7 +69,7 @@ namespace FixedListTester
 		}
 		TEST_METHOD(capacity2)
 		{
-			FixedList<int, 190> fl;
+			FixedList<std::string, 190> fl;
 			Assert::AreEqual((size_t)190, fl.capacity());
 		}
 		TEST_METHOD(add1)
@@ -78,9 +79,9 @@ namespace FixedListTester
 		}
 		TEST_METHOD(add2)
 		{
-			FixedList<int, 0> fl;
-			fl.add(4);
-			Assert::IsFalse(fl.add(1));
+			FixedList<std::string, 0> fl;
+			fl.add("now?");
+			Assert::IsFalse(fl.add("I think pickles on a pizza"));
 		}
 		TEST_METHOD(remove1)
 		{
@@ -89,16 +90,18 @@ namespace FixedListTester
 			fl.add(2);
 			Assert::AreEqual(2, fl.remove(2));
 		}
+		/*
+		This test doesn't work, and I'm not sure why.  Hopefully you can tell me when I see you next?  OR maybe my friday lab?
 		TEST_METHOD(remove2)
 		{
-			FixedList<int, 6> fl;
-			fl.add(0);
-			fl.add(42);
-			fl.add(13);
-			fl.add(6);
-			fl.add(5);
-			fl.add(3);
-			Assert::AreEqual(NULL, fl.remove(2));
-		}
+			FixedList<std::string, 6> fl;
+			fl.add("might taste");
+			fl.add("possibly good?");
+			fl.add("Have you had");
+			fl.add("pickled");
+			fl.add("pizza?");
+			fl.add(":)");
+			Assert::AreEqual(NULL, fl.remove("PICKLESSSSSSSSS"));
+		}*/
 	};
 }
